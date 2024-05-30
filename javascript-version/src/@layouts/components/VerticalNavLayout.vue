@@ -27,9 +27,9 @@ export default defineComponent({
 
       // 👉 Navbar
       const navbar = h('header', { class: ['layout-navbar navbar-blur'] }, [
-        h('div', { class: 'navbar-content-container' }, slots.navbar?.({
-          toggleVerticalOverlayNavActive: toggleIsOverlayNavActive,
-        })),
+          h('div', { class: 'navbar-content-container' }, slots.navbar?.({
+            toggleVerticalOverlayNavActive: toggleIsOverlayNavActive,
+          })),
       ])
 
       const main = h('main', { class: 'layout-page-content' }, h('div', { class: 'page-content-container' }, slots.default?.()))
@@ -168,4 +168,10 @@ export default defineComponent({
     }
   }
 }
+
+
+.layout-wrapper.layout-nav-type-vertical .layout-navbar.navbar-blur::after {
+  display: none;
+}
+
 </style>

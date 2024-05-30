@@ -6,14 +6,25 @@
   <link rel="icon" href="/favicon.ico" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Sneat - Vuetify Vuejs Admin Template</title>
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
   <link rel="stylesheet" type="text/css" href="/loader.css" />
 </head>
 
+<style>
+  body {
+  background-color: #0F123BCC;
+  background: url(../public/dashboard-bg-img.png) no-repeat top center;
+  background-size: cover;
+  height: 100%;
+  width: 100%;
+  position: relative;
+}
+</style>
+
 <body>
   <div id="app">
-    <div id="loading-bg">
+    <!-- <div id="loading-bg">
       <div class="loading-logo">
-         <!-- SVG Logo -->
          <svg width="100" height="80" viewBox="0 0 100 80" fill="none" xmlns="http://www.w3.org/2000/svg">
           <rect width="100" height="80" />
           <mask id="mask0_78_100113" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="27" y="10" width="35"
@@ -53,10 +64,11 @@
         <div class="effect-2 effects"></div>
         <div class="effect-3 effects"></div>
       </div>
-    </div>
+    </div> -->
   </div>
   <script type="module" src="/src/main.js"></script>
-  <script>
+  <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+  <!-- <script>
     const loaderColor = localStorage.getItem('sneat-initial-loader-bg') || '#FFFFFF'
     const primaryColor = localStorage.getItem('sneat-initial-loader-color') || '#696CFF'
 
@@ -65,7 +77,7 @@
 
     if (primaryColor)
       document.documentElement.style.setProperty('--initial-loader-color', primaryColor)
-  </script>
+  </script> -->
 </body>
 
 </html>
