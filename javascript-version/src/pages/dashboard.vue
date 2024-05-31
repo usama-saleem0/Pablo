@@ -309,14 +309,42 @@ const balanceData = [
           cols="12"
           md="7"
         >
-          <CardStatisticsVertical
+          <!-- <CardStatisticsVertical
             v-bind="{
               title: 'Sales',
               image: wallet,
               stats: '$4,679',
               change: 28.42,
             }"
-          />
+          /> -->
+          <div class="performing-sessions-card">
+            <div class="perform-head">
+              <h4>Top Performing Sessions</h4>
+              <div class="perform-menu">
+                <span><i class='bx bx-dots-horizontal-rounded'></i></span>
+              </div>
+            </div>
+            <div class="session-card">
+              <div class="session-text">
+                <h6>SessionID: 19022399</h6>
+                <h6>People Interacted</h6>
+              </div>
+              <div class="people-percent">
+                <h4>145 people</h4>
+                <h4>90%</h4>
+              </div>
+            </div>
+            <div class="session-card">
+              <div class="session-text">
+                <h6>Session ID: 908SD232</h6>
+                <h6>People Interacted</h6>
+              </div>
+              <div class="people-percent">
+                <h4>200 people</h4>
+                <h4>78%</h4>
+              </div>
+            </div>
+          </div>
         </VCol>
       </VRow>
     </VCol>
@@ -324,17 +352,18 @@ const balanceData = [
     <!-- 👉 Total Revenue -->
     <VCol
       cols="12"
-      md="8"
+      md="7"
       order="2"
       order-md="1"
     >
       <AnalyticsTotalRevenue />
+      
     </VCol>
 
     <VCol
       cols="12"
       sm="8"
-      md="4"
+      md="5"
       order="1"
       order-md="2"
     >
@@ -441,6 +470,72 @@ const balanceData = [
   backdrop-filter: blur(60px);
   border-radius: 20px;
 }
+
+.performing-sessions-card {
+    padding: 20px;
+    border-radius: 20px;
+    background: linear-gradient(127deg, rgba(6, 11, 40, 0.74) 28.26%, rgba(14, 21, 58, 0.71) 91.2%);
+    backdrop-filter: blur(60px);
+}
+
+.perform-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0px 0px 20px 0px;
+}
+
+.perform-menu span {
+    color: #7551FF;
+    font-size: 25px;
+    background: #ffffff14;
+    padding: 6px 4px 0px 4px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.perform-head h4 {
+    font-family: "Plus Jakarta Sans";
+    font-size: 18px;
+}
+
+.session-card {
+    padding: 19px;
+    margin: 14px 10px;
+    border-radius: 20px;
+    background: linear-gradient(127deg, #060C29 28.26%, rgba(4, 12, 48, 0.50) 91.2%);
+    backdrop-filter: blur(60px);
+}
+
+.session-text {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.session-text h6 {
+    font-family: "Plus Jakarta Sans";
+    font-size: 14px;
+    font-weight: 400;
+    color: #A0AEC0;
+}
+
+.people-percent h4 {
+    font-family: "Plus Jakarta Sans";
+    font-size: 18px;
+    color: #ffff;
+    margin: 5px 0px;
+}
+
+.people-percent {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+
+
+
 
 
 </style>

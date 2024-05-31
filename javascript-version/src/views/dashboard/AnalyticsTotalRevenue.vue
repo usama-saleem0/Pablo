@@ -231,15 +231,14 @@ const balanceData = [
 </script>
 
 <template>
-  <VCard>
+  <VCard class="sessions-list-sec">
     <VRow no-gutters>
       <VCol
         cols="12"
-        sm="7"
-        xl="8"
-        :class="$vuetify.display.smAndUp ? 'border-e' : 'border-b'"
+        sm="12"
+        xl="12"
       >
-        <VCardItem class="pb-0">
+        <!-- <VCardItem class="pb-0">
           <VCardTitle>Total Revenue</VCardTitle>
 
           <template #append>
@@ -249,19 +248,47 @@ const balanceData = [
           </template>
         </VCardItem>
 
-        <!-- bar chart -->
         <VueApexCharts
           id="bar-chart"
           type="bar"
           :height="336"
           :options="chartOptions.bar"
           :series="series"
-        />
+        /> -->
+
+      <div class="my_sessions_card">
+        <h3>My Sessions</h3>
+        <div class="view-session-card">
+          <div class="session-image">
+            <img src="../../assets/images/cards/session-image.png" alt="">
+          </div>
+          <div class="session-name">
+            <h4>UI/UX Design</h4>
+            <p>Session ID: 199 - 177 - 0323</p>
+            <p>Schedule Time:  Tue 20 May 2024 19:00</p>
+            <p>Owner: FRB1235476</p>
+          </div>
+          <div class="view-sesssion-button">
+             <div class="short-edit-delete">
+              <div class="short-list">
+                <h6><i class='bx bxs-star'></i> Short List</h6>
+              </div>
+              <div class="delete-button">
+                <h5><i class='bx bx-trash'></i> Delete</h5>
+              </div>
+              <div class="edit-button">
+                <h5><i class='bx bxs-pencil'></i> Edit</h5>
+              </div>
+             </div>
+          </div>
+        </div>
+      </div>
+
       </VCol>
 
-      <VCol
+      <!-- <VCol
         cols="12"
-        sm="5"
+        sm="4"
         xl="4"
       >
         <VCardText class="text-center">
@@ -285,7 +312,6 @@ const balanceData = [
             </VMenu>
           </VBtn>
 
-          <!-- radial chart -->
           <VueApexCharts
             type="radialBar"
             :height="200"
@@ -320,13 +346,110 @@ const balanceData = [
             </div>
           </div>
         </VCardText>
-      </VCol>
+      </VCol> -->
     </VRow>
   </VCard>
 </template>
 
-<style lang="scss">
-#bar-chart .apexcharts-series[rel="2"] {
-  transform: translateY(-10px);
+<style lang="css">
+
+.sessions-list-sec {
+    border-radius: 20px;
+    background: linear-gradient(127deg, rgba(6, 11, 40, 0.94) 19.41%, rgba(10, 14, 35, 0.49) 76.65%);
+    backdrop-filter: blur(60px);
 }
+
+.my_sessions_card {
+    padding: 20px;
+}
+
+.my_sessions_card h3 {
+    color: #FFF;
+    font-family: "Plus Jakarta Sans";
+    font-size: 20px;
+    font-weight: 700;
+}
+
+
+.my_sessions_card {
+      padding: 30px;
+  }
+
+.my_sessions_card h3 {
+    color: #FFF;
+    font-family: "Plus Jakarta Sans";
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.view-session-card {
+    display: flex;
+    align-items: center;
+    border-radius: 20px;
+    background: linear-gradient(127deg, rgba(24, 29, 60, 0.94) 19.41%, rgba(10, 14, 35, 0.49) 76.65%);
+    backdrop-filter: blur(60px);
+    margin: 15px 0px 0px 0px;
+    gap: 5px;
+}
+
+
+.session-name h4 {
+    color: #FFF;
+    font-family: "Plus Jakarta Sans";
+    font-size: 16px;
+    text-transform: uppercase;
+    font-weight: 500;
+} 
+
+.session-name h4 {
+    color: #FFF;
+    font-family: "Plus Jakarta Sans";
+    font-size: 16px;
+    text-transform: uppercase;
+    font-weight: 500;
+    margin: 0px 0px 3px 0px;
+}
+
+.session-name p {
+    margin: 0px;
+    font-family: "Plus Jakarta Sans";
+    font-size: 12px;
+    font-weight: 400;
+}
+
+.session-image {padding: 10px;}
+
+.session-image {
+    padding: 15px 10px;
+}
+
+.short-edit-delete {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 6px;
+}
+
+.view-session-card {
+    width: 100%;
+}
+
+.short-list h6 {
+    font-family: "Plus Jakarta Sans";
+    font-size: 12px;
+    font-weight: 400;
+    color: #A0AEC0;
+}
+
+.delete-button h5 {
+    font-weight: 400;
+    color: #F53C2B;
+    font-family: "Plus Jakarta Sans";
+    font-size: 12px;
+    text-transform: uppercase;
+}
+
+
+
+
 </style>
