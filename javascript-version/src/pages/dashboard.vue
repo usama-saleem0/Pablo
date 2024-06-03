@@ -615,4 +615,29 @@ const questions = ref([1,2,3,4,5])
 }
 
 
+
+@media only screen and (max-width: 600px) {
+  .questions-card {
+    flex-direction: column;
+  }
+
+  .questions-card img {
+    width: 50px;
+    height: 50px;
+  }
+
+  .questions-txt h5 {
+    margin: 0px 0px 6px 0px;
+  }
+
+  .question-solved-txt h5 {
+    gap: 10px;  
+  }
+
+ 
+  
+
+}
+
+
 </style>

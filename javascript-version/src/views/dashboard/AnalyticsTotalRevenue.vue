@@ -281,4 +281,27 @@ const array = ref([1,2,3,4,5])
 }
 
 
+@media only screen and (max-width: 600px) {
+  .session-flex {
+    flex-direction: column;
+  }
+  .view-session-card {
+    flex-direction: column;
+  }
+  .view-session-card {
+        padding: 0px 0px 30px 0px;
+  }
+  .session-name {
+    padding: 0px 0px 10px 20px;
+  }
+  .view-sesssion-button {
+    text-align: start;
+  }
+
+}
+
+
+
+
+
 </style>

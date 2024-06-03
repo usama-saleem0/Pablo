@@ -94,5 +94,21 @@ const illustrationJohn = computed(() => global.name.value === 'dark' ? illustrat
     gap: 3px;
 }
 
+@media only screen and (max-width: 425px) {
+  .mark-btn a {
+    justify-content: center;
+    font-size: 18px;
+  }
+  .v-card-text span {
+    font-size: 18px;
+  }
+  .v-card-item .v-card-title h3 {
+    font-size: 32px;
+  }
+  .v-card-item__content h5{
+      font-size: 18px;
+  }
+}
+
 
 </style>

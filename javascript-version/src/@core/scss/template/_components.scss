@@ -49,10 +49,8 @@
   .v-timeline-divider__dot {
     .v-timeline-divider__inner-dot {
       box-shadow: inset 0 0 0 0.125rem rgb(var(--v-theme-on-surface-variant));
-
       @each $color-name in variables.$theme-colors-name {
         background-color: rgb(var(--v-theme-surface)) !important;
-
         &.bg-#{$color-name} {
           box-shadow: inset 0 0 0 0.125rem rgb(var(--v-theme-#{$color-name}));
         }

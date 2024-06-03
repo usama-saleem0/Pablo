@@ -126,7 +126,7 @@ const lightmodesvg = `<svg xmlns="http://www.w3.org/2000/svg" width="20" height=
           <VIcon icon="bx-menu" />
         </IconBtn>
 
-      <div class="header-">
+      <div class="header-heading">
         <h1>Dashboard</h1>
       </div>
 
@@ -153,9 +153,9 @@ const lightmodesvg = `<svg xmlns="http://www.w3.org/2000/svg" width="20" height=
         </IconBtn>
         <span>Signin</span>
       </div>
-      <IconBtn class="me-2 signin-icon">
+      <!-- <IconBtn class="me-2 signin-icon">
           <VIcon icon="bxs-cog" />
-        </IconBtn>
+        </IconBtn> -->
         
         <IconBtn class="me-2 signin-icon">
           <VIcon icon="bx-bell" />
@@ -479,6 +479,39 @@ const lightmodesvg = `<svg xmlns="http://www.w3.org/2000/svg" width="20" height=
     width: 100%
 }
 
+
+@media only screen and (max-width: 600px) {
+  .header-heading h1 {
+    font-size: 18px;
+  }
+
+  .signin-icon {
+    width: 20px !important;
+    height: 20px !important;
+  }
+  .header-signin span {
+      font-size: 16px;
+      margin-top: -6px;
+  }
+
+  .header-search input {
+    display: none;
+  }
+
+  .header-signin {
+    display: none;
+  }
+
+  .header-search-icon {
+    color: #fff;
+  }
+
+  .header-search {
+    padding: 5px 5px 5px 5px;
+    border: 0.5px solid rgba(226, 232, 240, 0.3019607843);
+    background: #0F1535;
+}
+}
 
 
 </style>
