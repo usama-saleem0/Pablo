@@ -26,10 +26,10 @@ import { hexToRgb } from '@layouts/utils'
 const chartOptions = computed(() => {
   const currentTheme = vuetifyTheme.current.value.colors
   const variableTheme = vuetifyTheme.current.value.variables
-  const disabledTextColor = `rgba(${ hexToRgb(String(currentTheme['on-surface'])) },${ variableTheme['disabled-opacity'] })`
-  const primaryTextColor = `rgba(${ hexToRgb(String(currentTheme['on-surface'])) },${ variableTheme['high-emphasis-opacity'] })`
-  const borderColor = `rgba(${ hexToRgb(String(variableTheme['border-color'])) },${ variableTheme['border-opacity'] })`
-  
+  const disabledTextColor = `rgba(${hexToRgb(String(currentTheme['on-surface']))},${variableTheme['disabled-opacity']})`
+  const primaryTextColor = `rgba(${hexToRgb(String(currentTheme['on-surface']))},${variableTheme['high-emphasis-opacity']})`
+  const borderColor = `rgba(${hexToRgb(String(variableTheme['border-color']))},${variableTheme['border-opacity']})`
+
   return {
     bar: {
       chart: {
@@ -44,8 +44,8 @@ const chartOptions = computed(() => {
         colors: [currentTheme.surface],
       },
       colors: [
-        `rgba(${ hexToRgb(String(currentTheme.primary)) }, 1)`,
-        `rgba(${ hexToRgb(String(currentTheme.info)) }, 1)`,
+        `rgba(${hexToRgb(String(currentTheme.primary))}, 1)`,
+        `rgba(${hexToRgb(String(currentTheme.info))}, 1)`,
       ],
       legend: {
         offsetX: -10,
@@ -134,7 +134,7 @@ const chartOptions = computed(() => {
       chart: { sparkline: { enabled: true } },
       labels: ['Growth'],
       stroke: { dashArray: 5 },
-      colors: [`rgba(${ hexToRgb(String(currentTheme.primary)) }, 1)`],
+      colors: [`rgba(${hexToRgb(String(currentTheme.primary))}, 1)`],
       states: {
         hover: { filter: { type: 'none' } },
         active: { filter: { type: 'none' } },
@@ -217,28 +217,55 @@ const balanceData = [
 ]
 
 
+const questionData = [
+  {
+    title: "What are the steps you can take if your WordPress file is hacked?",
+    views: 3.43,
+    votes: 1,
+    ans: 1,
+  },
+  {
+    title: "Lorem Ipsum",
+    views: 4.43,
+    votes: 2,
+    ans: 2,
+  },
+  {
+    title: "What are the steps you can take if your WordPress file is hacked?",
+    views: 3.43,
+    votes: 3,
+    ans: 3,
+  },
+  {
+    title: "What are the steps you can take if your WordPress file is hacked?",
+    views: 4.43,
+    votes: 4,
+    ans: 4,
+  },
+  {
+    title: "What are the steps you can take if your WordPress file is hacked?",
+    views: 5.43,
+    votes: 4,
+    ans: 4,
+  }
+]
+
+
+const questions = ref([1,2,3,4,5])
+
 </script>
 
 <template>
   <VRow>
     <!-- 👉 Congratulations -->
-    <VCol
-      cols="12"
-      md="5"
-    >
+    <VCol cols="12" md="5">
       <AnalyticsCongratulations />
     </VCol>
 
-    <VCol
-      cols="12"
-      sm="7"
-    >
+    <VCol cols="12" sm="7">
       <VRow>
         <!-- 👉 Profit -->
-        <VCol
-          cols="12"
-          md="5"
-        >
+        <VCol cols="12" md="5">
           <!-- <CardStatisticsVertical
             v-bind="{
               title: 'Profit',
@@ -248,7 +275,7 @@ const balanceData = [
             }"
           /> -->
           <VCardText class="growth-card text-center">
-          <!-- <VBtn
+            <!-- <VBtn
             size="small"
             variant="tonal"
             append-icon="bx-chevron-down"
@@ -268,47 +295,29 @@ const balanceData = [
             </VMenu>
           </VBtn> -->
 
-          <!-- radial chart -->
-          <VueApexCharts
-            type="radialBar"
-            :height="200"
-            :options="chartOptions.radial"
-            :series="[78]"
-          />
+            <!-- radial chart -->
+            <VueApexCharts type="radialBar" :height="200" :options="chartOptions.radial" :series="[78]" />
 
-          <p class="font-weight-medium text-high-emphasis mb-7">
-            62% Company Growth
-          </p>
-          <div class="d-flex align-center justify-center gap-x-8 gap-y-4 flex-wrap">
-            <div
-              v-for="data in balanceData"
-              :key="data.year"
-              class="d-flex align-center gap-3"
-            >
-              <VAvatar
-                :icon="data.icon"
-                :color="data.color"
-                size="38"
-                rounded
-                variant="tonal"
-              />
+            <p class="font-weight-medium text-high-emphasis mb-7">
+              62% Company Growth
+            </p>
+            <div class="d-flex align-center justify-center gap-x-8 gap-y-4 flex-wrap">
+              <div v-for="data in balanceData" :key="data.year" class="d-flex align-center gap-3">
+                <VAvatar :icon="data.icon" :color="data.color" size="38" rounded variant="tonal" />
 
-              <div class="text-start">
-                <span class="text-sm"> {{ data.year }}</span>
-                <h6 class="text-base font-weight-medium">
-                  {{ data.amount }}
-                </h6>
+                <div class="text-start">
+                  <span class="text-sm"> {{ data.year }}</span>
+                  <h6 class="text-base font-weight-medium">
+                    {{ data.amount }}
+                  </h6>
+                </div>
               </div>
             </div>
-          </div>
-        </VCardText>
+          </VCardText>
         </VCol>
 
         <!-- 👉 Sales -->
-        <VCol
-          cols="12"
-          md="7"
-        >
+        <VCol cols="12" md="7">
           <!-- <CardStatisticsVertical
             v-bind="{
               title: 'Sales',
@@ -350,25 +359,30 @@ const balanceData = [
     </VCol>
 
     <!-- 👉 Total Revenue -->
-    <VCol
-      cols="12"
-      md="7"
-      order="2"
-      order-md="1"
-    >
+    <VCol cols="12" md="7" order="2" order-md="1">
       <AnalyticsTotalRevenue />
-      
+
     </VCol>
 
-    <VCol
-      cols="12"
-      sm="8"
-      md="5"
-      order="1"
-      order-md="2"
-    >
-      <VRow>
-        <!-- 👉 Payments -->
+    <VCol cols="12" sm="8" md="5" order="1" order-md="2">
+
+      <div class="my-question-sec">
+        <h4>My Questions</h4>
+        <div class="question-cards-scroll">
+          <div class="questions-card" v-for="item in questionData">
+            <img src="../../src/assets/images/cards/questions.png" alt="">
+            <div class="questions-txt">
+              <h5>{{ item.title }}</h5>
+              <div class="question-solved-txt">
+                <a href="#">Solved</a>
+                <h5><span>{{ item.views }}k views</span><span>Votes: {{ item.votes }}</span><span>Ans: {{ item.ans }}</span></h5>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- <VRow>
         <VCol
           cols="12"
           sm="6"
@@ -382,8 +396,6 @@ const balanceData = [
             }"
           />
         </VCol>
-
-        <!-- 👉 Revenue -->
         <VCol
           cols="12"
           sm="6"
@@ -397,55 +409,41 @@ const balanceData = [
             }"
           />
         </VCol>
-      </VRow>
-
-      <VRow>
-        <!-- 👉 Profit Report -->
+      </VRow> -->
+      <!-- <VRow>
         <VCol
           cols="12"
           sm="12"
         >
           <AnalyticsProfitReport />
         </VCol>
-      </VRow>
+      </VRow> -->
+
+
     </VCol>
 
     <!-- 👉 Order Statistics -->
-    <VCol
-      cols="12"
-      md="4"
-      sm="6"
-      order="3"
-    >
+    <!-- <VCol cols="12" md="4" sm="6" order="3">
       <AnalyticsOrderStatistics />
-    </VCol>
+    </VCol> -->
 
     <!-- 👉 Tabs chart -->
-    <VCol
-      cols="12"
-      md="4"
-      sm="6"
-      order="3"
-    >
+    <!-- <VCol cols="12" md="4" sm="6" order="3">
       <AnalyticsFinanceTabs />
-    </VCol>
+    </VCol> -->
 
     <!-- 👉 Transactions -->
-    <VCol
-      cols="12"
-      md="4"
-      sm="6"
-      order="3"
-    >
+    <!-- <VCol cols="12" md="4" sm="6" order="3">
       <AnalyticsTransactions />
-    </VCol>
+    </VCol> -->
   </VRow>
 </template>
 
 
 
 
-<style scoped> 
+<style scoped>
+@import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&display=swap');
 
 .welcomeback-card {
   background: url(../assets/images/cards/mark-johshan-bg.png) no-repeat top center;
@@ -455,14 +453,14 @@ const balanceData = [
 }
 
 .v-card-item {
-    padding: 1.1rem 1.5rem;
+  padding: 1.1rem 1.5rem;
 }
 
 .v-card-item__content h5 {
-    font-size: 16px;
-    font-family: 'Plus Jakarta Sans';
-    color: #A0AEC0;
-    font-weight: 400;
+  font-size: 16px;
+  font-family: 'Plus Jakarta Sans';
+  color: #A0AEC0;
+  font-weight: 400;
 }
 
 .growth-card {
@@ -472,70 +470,149 @@ const balanceData = [
 }
 
 .performing-sessions-card {
-    padding: 20px;
-    border-radius: 20px;
-    background: linear-gradient(127deg, rgba(6, 11, 40, 0.74) 28.26%, rgba(14, 21, 58, 0.71) 91.2%);
-    backdrop-filter: blur(60px);
+  padding: 20px;
+  border-radius: 20px;
+  background: linear-gradient(127deg, rgba(6, 11, 40, 0.74) 28.26%, rgba(14, 21, 58, 0.71) 91.2%);
+  backdrop-filter: blur(60px);
 }
 
 .perform-head {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin: 0px 0px 20px 0px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0px 0px 20px 0px;
 }
 
 .perform-menu span {
-    color: #7551FF;
-    font-size: 25px;
-    background: #ffffff14;
-    padding: 6px 4px 0px 4px;
-    border-radius: 10px;
-    cursor: pointer;
+  color: #7551FF;
+  font-size: 25px;
+  background: #ffffff14;
+  padding: 6px 4px 0px 4px;
+  border-radius: 10px;
+  cursor: pointer;
 }
 
 .perform-head h4 {
-    font-family: "Plus Jakarta Sans";
-    font-size: 18px;
+  font-family: "Plus Jakarta Sans";
+  font-size: 18px;
 }
 
 .session-card {
-    padding: 19px;
-    margin: 14px 10px;
-    border-radius: 20px;
-    background: linear-gradient(127deg, #060C29 28.26%, rgba(4, 12, 48, 0.50) 91.2%);
-    backdrop-filter: blur(60px);
+  padding: 19px;
+  margin: 14px 10px;
+  border-radius: 20px;
+  background: linear-gradient(127deg, #060C29 28.26%, rgba(4, 12, 48, 0.50) 91.2%);
+  backdrop-filter: blur(60px);
 }
 
 .session-text {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .session-text h6 {
-    font-family: "Plus Jakarta Sans";
-    font-size: 14px;
-    font-weight: 400;
-    color: #A0AEC0;
+  font-family: "Plus Jakarta Sans";
+  font-size: 14px;
+  font-weight: 400;
+  color: #A0AEC0;
 }
 
 .people-percent h4 {
-    font-family: "Plus Jakarta Sans";
-    font-size: 18px;
-    color: #ffff;
-    margin: 5px 0px;
+  font-family: "Plus Jakarta Sans";
+  font-size: 18px;
+  color: #ffff;
+  margin: 5px 0px;
 }
 
 .people-percent {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
+.my-question-sec {
+  border-radius: 20px;
+  background: linear-gradient(127deg, rgba(6, 11, 40, 0.94) 19.41%, rgba(10, 14, 35, 0.49) 76.65%);
+  backdrop-filter: blur(60px);
+  padding: 30px;
+}
 
+.my-question-sec h4 {
+  color: #FFF;
+  font-family: "Plus Jakarta Sans";
+  font-size: 20px;
+  font-weight: 700;
+  margin: 0px 0px 20px 0px
+}
 
+.questions-card {
+  display: flex;
+  gap: 15px;
+  margin: 10px 0px 20px 0px;
+  border-radius: 20px;
+  background: linear-gradient(127deg, rgba(24, 29, 60, 0.94) 19.41%, rgba(10, 14, 35, 0.49) 76.65%);
+  backdrop-filter: blur(60px);
+  padding: 20px 10px;
+}
 
+.questions-txt h5 {
+  color: #FFF;
+  font-family: Rajdhani;
+  font-size: 19px;
+  font-weight: 400;
+}
+
+.question-solved-txt {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.question-solved-txt a {
+    padding: 5px 10px 2px 9px;
+    border-radius: 10px;
+    background: #2DCE89;
+    color: #FFF;
+    font-family: Rajdhani;
+    font-size: 16px;
+}
+
+.question-solved-txt h5 {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.question-solved-txt h5 span {
+    color: #6A6A6A;
+    font-family: Rajdhani;
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.question-cards-scroll {
+    height: 400px;
+    overflow-y: scroll;
+    padding: 0px 10px 0px 0px;
+}
+
+.question-cards-scroll::-webkit-scrollbar {
+  width: 10px;
+  border-radius: 50px;
+}
+
+/* Track */
+.question-cards-scroll::-webkit-scrollbar-track {
+  background: #060b28f0; 
+  border-radius: 50px;
+}
+ 
+/* Handle */
+.question-cards-scroll::-webkit-scrollbar-thumb {
+  background: #262c4e; 
+  border-radius: 50px;
+}
 
 
 </style>

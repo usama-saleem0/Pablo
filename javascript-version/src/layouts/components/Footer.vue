@@ -16,7 +16,7 @@
         rel="noopener noreferrer"
         class="text-primary ms-1"
       >Shahdin</a>
-    </span>
+    </span> 
     <!-- 👉 Footer: right content -->
     <span class="d-md-flex gap-x-4 text-primary d-none">
       <a

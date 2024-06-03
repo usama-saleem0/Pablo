@@ -5,229 +5,14 @@ import {
   useTheme,
 } from 'vuetify'
 import { hexToRgb } from '@layouts/utils'
+import { ref, reactive } from 'vue'
+
 
 const vuetifyTheme = useTheme()
 const display = useDisplay()
 
-const series = [
-  {
-    name: `${ new Date().getFullYear() - 1 }`,
-    data: [
-      18,
-      7,
-      15,
-      29,
-      18,
-      12,
-      9,
-    ],
-  },
-  {
-    name: `${ new Date().getFullYear() - 2 }`,
-    data: [
-      -13,
-      -18,
-      -9,
-      -14,
-      -5,
-      -17,
-      -15,
-    ],
-  },
-]
+const array = ref([1,2,3,4,5])
 
-const chartOptions = computed(() => {
-  const currentTheme = vuetifyTheme.current.value.colors
-  const variableTheme = vuetifyTheme.current.value.variables
-  const disabledTextColor = `rgba(${ hexToRgb(String(currentTheme['on-surface'])) },${ variableTheme['disabled-opacity'] })`
-  const primaryTextColor = `rgba(${ hexToRgb(String(currentTheme['on-surface'])) },${ variableTheme['high-emphasis-opacity'] })`
-  const borderColor = `rgba(${ hexToRgb(String(variableTheme['border-color'])) },${ variableTheme['border-opacity'] })`
-  
-  return {
-    bar: {
-      chart: {
-        stacked: true,
-        parentHeightOffset: 0,
-        toolbar: { show: false },
-      },
-      dataLabels: { enabled: false },
-      stroke: {
-        width: 6,
-        lineCap: 'round',
-        colors: [currentTheme.surface],
-      },
-      colors: [
-        `rgba(${ hexToRgb(String(currentTheme.primary)) }, 1)`,
-        `rgba(${ hexToRgb(String(currentTheme.info)) }, 1)`,
-      ],
-      legend: {
-        offsetX: -10,
-        position: 'top',
-        fontSize: '14px',
-        horizontalAlign: 'left',
-        fontFamily: 'Public Sans',
-        labels: { colors: currentTheme.secondary },
-        itemMargin: {
-          vertical: 4,
-          horizontal: 10,
-        },
-        markers: {
-          width: 8,
-          height: 8,
-          radius: 10,
-          offsetX: -4,
-        },
-      },
-      states: {
-        hover: { filter: { type: 'none' } },
-        active: { filter: { type: 'none' } },
-      },
-      grid: {
-        borderColor,
-        padding: { bottom: 5 },
-      },
-      plotOptions: {
-        bar: {
-          borderRadius: 10,
-          columnWidth: '30%',
-          endingShape: 'rounded',
-          startingShape: 'rounded',
-        },
-      },
-      xaxis: {
-        axisTicks: { show: false },
-        crosshairs: { opacity: 0 },
-        axisBorder: { show: false },
-        categories: [
-          'Jan',
-          'Feb',
-          'Mar',
-          'Apr',
-          'May',
-          'Jun',
-          'Jul',
-        ],
-        labels: {
-          style: {
-            fontSize: '14px',
-            colors: disabledTextColor,
-            fontFamily: 'Public Sans',
-          },
-        },
-      },
-      yaxis: {
-        labels: {
-          style: {
-            fontSize: '14px',
-            colors: disabledTextColor,
-            fontFamily: 'Public Sans',
-          },
-        },
-      },
-      responsive: [
-        {
-          breakpoint: display.thresholds.value.xl,
-          options: { plotOptions: { bar: { columnWidth: '43%' } } },
-        },
-        {
-          breakpoint: display.thresholds.value.lg,
-          options: { plotOptions: { bar: { columnWidth: '50%' } } },
-        },
-        {
-          breakpoint: display.thresholds.value.md,
-          options: { plotOptions: { bar: { columnWidth: '42%' } } },
-        },
-        {
-          breakpoint: display.thresholds.value.sm,
-          options: { plotOptions: { bar: { columnWidth: '45%' } } },
-        },
-      ],
-    },
-    radial: {
-      chart: { sparkline: { enabled: true } },
-      labels: ['Growth'],
-      stroke: { dashArray: 5 },
-      colors: [`rgba(${ hexToRgb(String(currentTheme.primary)) }, 1)`],
-      states: {
-        hover: { filter: { type: 'none' } },
-        active: { filter: { type: 'none' } },
-      },
-      fill: {
-        type: 'gradient',
-        gradient: {
-          shade: 'dark',
-          opacityTo: 0.6,
-          opacityFrom: 1,
-          shadeIntensity: 0.5,
-          stops: [
-            30,
-            70,
-            100,
-          ],
-          inverseColors: false,
-          gradientToColors: [currentTheme.primary],
-        },
-      },
-      plotOptions: {
-        radialBar: {
-          endAngle: 150,
-          startAngle: -140,
-          hollow: { size: '55%' },
-          track: { background: 'transparent' },
-          dataLabels: {
-            name: {
-              offsetY: 25,
-              fontWeight: 600,
-              fontSize: '16px',
-              color: currentTheme.secondary,
-              fontFamily: 'Public Sans',
-            },
-            value: {
-              offsetY: -15,
-              fontWeight: 500,
-              fontSize: '24px',
-              color: primaryTextColor,
-              fontFamily: 'Public Sans',
-            },
-          },
-        },
-      },
-      responsive: [
-        {
-          breakpoint: 900,
-          options: { chart: { height: 200 } },
-        },
-        {
-          breakpoint: 735,
-          options: { chart: { height: 200 } },
-        },
-        {
-          breakpoint: 660,
-          options: { chart: { height: 200 } },
-        },
-        {
-          breakpoint: 600,
-          options: { chart: { height: 280 } },
-        },
-      ],
-    },
-  }
-})
-
-const balanceData = [
-  {
-    icon: 'bx-dollar',
-    amount: '$32.5k',
-    year: '2023',
-    color: 'primary',
-  },
-  {
-    icon: 'bx-wallet',
-    amount: '$41.2k',
-    year: '2022',
-    color: 'info',
-  },
-]
 </script>
 
 <template>
@@ -258,7 +43,9 @@ const balanceData = [
 
       <div class="my_sessions_card">
         <h3>My Sessions</h3>
-        <div class="view-session-card">
+        <div class="session-scroll">
+        <div class="view-session-card" v-for="item in array">
+          <div class="session-flex">
           <div class="session-image">
             <img src="../../assets/images/cards/session-image.png" alt="">
           </div>
@@ -268,6 +55,7 @@ const balanceData = [
             <p>Schedule Time:  Tue 20 May 2024 19:00</p>
             <p>Owner: FRB1235476</p>
           </div>
+        </div>
           <div class="view-sesssion-button">
              <div class="short-edit-delete">
               <div class="short-list">
@@ -280,8 +68,10 @@ const balanceData = [
                 <h5><i class='bx bxs-pencil'></i> Edit</h5>
               </div>
              </div>
+             <a href="#">View Session</a>
           </div>
         </div>
+      </div>
       </div>
 
       </VCol>
@@ -360,7 +150,30 @@ const balanceData = [
 }
 
 .my_sessions_card {
-    padding: 20px;
+    padding: 30px;
+}
+
+.session-scroll {
+    height: 400px;
+    overflow-y: scroll;
+    padding: 0px 10px 0px 0px;
+}
+
+.session-scroll::-webkit-scrollbar {
+  width: 10px;
+  border-radius: 50px;
+}
+
+/* Track */
+.session-scroll::-webkit-scrollbar-track {
+  background: #060b28f0; 
+  border-radius: 50px;
+}
+ 
+/* Handle */
+.session-scroll::-webkit-scrollbar-thumb {
+  background: #262c4e; 
+  border-radius: 50px;
 }
 
 .my_sessions_card h3 {
@@ -368,43 +181,26 @@ const balanceData = [
     font-family: "Plus Jakarta Sans";
     font-size: 20px;
     font-weight: 700;
-}
-
-
-.my_sessions_card {
-      padding: 30px;
-  }
-
-.my_sessions_card h3 {
-    color: #FFF;
-    font-family: "Plus Jakarta Sans";
-    font-size: 20px;
-    font-weight: 700;
+    background: linear-gradient(127deg, rgb(6 11 41) 19.41%, rgb(10 22 60) 76.65%);
+    margin: 0px 0px 20px 0px;
 }
 
 .view-session-card {
     display: flex;
     align-items: center;
+    justify-content: space-between;
     border-radius: 20px;
     background: linear-gradient(127deg, rgba(24, 29, 60, 0.94) 19.41%, rgba(10, 14, 35, 0.49) 76.65%);
     backdrop-filter: blur(60px);
     margin: 15px 0px 0px 0px;
-    gap: 5px;
 }
 
 
-.session-name h4 {
-    color: #FFF;
-    font-family: "Plus Jakarta Sans";
-    font-size: 16px;
-    text-transform: uppercase;
-    font-weight: 500;
-} 
 
 .session-name h4 {
     color: #FFF;
     font-family: "Plus Jakarta Sans";
-    font-size: 16px;
+    font-size: 18px;
     text-transform: uppercase;
     font-weight: 500;
     margin: 0px 0px 3px 0px;
@@ -413,7 +209,7 @@ const balanceData = [
 .session-name p {
     margin: 0px;
     font-family: "Plus Jakarta Sans";
-    font-size: 12px;
+    font-size: 16px;
     font-weight: 400;
 }
 
@@ -428,28 +224,61 @@ const balanceData = [
     align-items: center;
     justify-content: space-between;
     gap: 6px;
-}
-
-.view-session-card {
-    width: 100%;
+    margin: 0px 0px 25px 0px;
 }
 
 .short-list h6 {
     font-family: "Plus Jakarta Sans";
-    font-size: 12px;
+    font-size: 16px;
     font-weight: 400;
     color: #A0AEC0;
+    cursor: pointer;
 }
 
 .delete-button h5 {
     font-weight: 400;
     color: #F53C2B;
     font-family: "Plus Jakarta Sans";
-    font-size: 12px;
+    font-size: 16px;
     text-transform: uppercase;
+    cursor: pointer;
 }
 
 
+.view-sesssion-button a {
+    margin: 10px 0px 10px 0px;
+    padding: 12px 25px;
+    border-radius: 12px;
+    background: #0075FF;
+    color: #fff;
+    text-align: center;
+    font-family: "Plus Jakarta Sans";
+    font-size: 16px;
+    border: 1px solid #0075FF;
+    transition: all .6s ease;
+}
+
+.view-sesssion-button a:hover {
+    background: transparent;
+    color: #0075FF;
+}
+
+.view-sesssion-button {
+    text-align: end;
+    margin: 0px 20px 0px 0px;
+}
+
+.session-flex {
+  display: flex;
+  align-items: center
+}
+
+.edit-button h5 {
+    text-transform: uppercase;
+    font-weight: 400;
+    font-size: 16px;
+    cursor: pointer;
+}
 
 
 </style>

@@ -67,7 +67,7 @@ const handleNavScroll = evt => {
             Logo
           </h1>
         </RouterLink>
-      </slot>
+      </slot> 
     </div>
     <slot name="before-nav-items">
       <div class="vertical-nav-items-shadow" />
