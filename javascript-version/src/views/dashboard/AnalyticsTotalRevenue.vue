@@ -281,6 +281,93 @@ const array = ref([1,2,3,4,5])
 }
 
 
+@media only screen and (max-width: 1440px) {
+  .welcomeback-card {
+    height: auto;
+  }
+
+  .vue-apexcharts p {
+    margin: 0px !important;
+  }
+
+  .company-growth {
+      flex-wrap: nowrap !important;
+      gap: 10px;
+  }
+
+  .session-flex {
+    flex-direction: column;
+  }
+
+  .view-sesssion-button {
+    text-align: left;
+  }
+
+  .view-session-card {
+    align-items: end;
+  }
+
+  .view-sesssion-button {
+    text-align: end;
+    margin: 0px 20px 30px 0px;
+  }
+
+  .session-name {
+    margin: 0px 0px 15px 15px;
+  }
+  .session-name p {
+    font-size: 15px;
+  }
+
+  .questions-card img {
+    width: 80px;
+    height: 80px;
+  }
+
+  .question-solved-txt h5 span {
+    font-size: 14px;
+  }
+
+  .questions-txt h5 {
+    font-size: 18px;
+    margin: 0px 0px 10px 0px;
+  }
+  .short-edit-delete {
+    gap: 3px;
+  }
+
+  .short-list h6 {
+    font-size: 14px;
+  }
+  .delete-button h5 {
+    font-size: 14px;
+  }
+
+  .edit-button h5 {
+    font-size: 14px;
+  }
+
+  .questions-card{
+    flex-direction: column; 
+  }
+
+  .welcomeback-card {
+    height: auto;
+  }
+
+  /* .growth-chart-dollar span {
+    font-size: 12px;
+  }
+
+  .growth-chart-dollar h6 {
+    font-size: 14px;
+  } */
+
+
+
+}
+
+
 @media only screen and (max-width: 600px) {
   .session-flex {
     flex-direction: column;
@@ -296,6 +383,7 @@ const array = ref([1,2,3,4,5])
   }
   .view-sesssion-button {
     text-align: start;
+    width: 85%;
   }
 
 }

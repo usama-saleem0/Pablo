@@ -262,10 +262,10 @@ const questions = ref([1,2,3,4,5])
       <AnalyticsCongratulations />
     </VCol>
 
-    <VCol cols="12" sm="7">
+    <VCol cols="12" sm="12" md="7" lg="7">
       <VRow>
         <!-- 👉 Profit -->
-        <VCol cols="12" md="5">
+        <VCol cols="12" sm="6" lg="5" md="5">
           <!-- <CardStatisticsVertical
             v-bind="{
               title: 'Profit',
@@ -301,11 +301,11 @@ const questions = ref([1,2,3,4,5])
             <p class="font-weight-medium text-high-emphasis mb-7">
               62% Company Growth
             </p>
-            <div class="d-flex align-center justify-center gap-x-8 gap-y-4 flex-wrap">
-              <div v-for="data in balanceData" :key="data.year" class="d-flex align-center gap-3">
+            <div class="d-flex align-center justify-center gap-x-8 gap-y-4 flex-wrap company-growth">
+              <div v-for="data in balanceData" :key="data.year" class="d-flex align-center gap-2">
                 <VAvatar :icon="data.icon" :color="data.color" size="38" rounded variant="tonal" />
 
-                <div class="text-start">
+                <div class="text-start growth-chart-dollar">
                   <span class="text-sm"> {{ data.year }}</span>
                   <h6 class="text-base font-weight-medium">
                     {{ data.amount }}
@@ -317,7 +317,7 @@ const questions = ref([1,2,3,4,5])
         </VCol>
 
         <!-- 👉 Sales -->
-        <VCol cols="12" md="7">
+        <VCol cols="12" sm="6" lg="7" md="7">
           <!-- <CardStatisticsVertical
             v-bind="{
               title: 'Sales',
@@ -364,7 +364,7 @@ const questions = ref([1,2,3,4,5])
 
     </VCol>
 
-    <VCol cols="12" sm="8" md="5" order="1" order-md="2">
+    <VCol cols="12" sm="12" md="5" order="1" order-md="2">
 
       <div class="my-question-sec">
         <h4>My Questions</h4>
@@ -615,6 +615,40 @@ const questions = ref([1,2,3,4,5])
 }
 
 
+/* @media only screen and (max-width: 1400px) {
+  .session-text h6 {
+    font-size: 12px;
+  }
+} */
+
+
+@media only screen and (max-width: 1024px) {
+  .welcomeback-card {
+    height: auto;
+  }
+
+  .session-text h6{
+    font-size: 11px;
+  }
+
+  .growth-chart-dollar h6 {
+    font-size: 12px;  
+  }
+
+  .edit-button h5 {
+        font-size: 11px;
+  }
+
+  .delete-button h5 {
+    font-size: 11px;
+  }
+
+  .short-list h6 {
+        font-size: 11px;
+    }
+  
+}
+
 
 @media only screen and (max-width: 600px) {
   .questions-card {
@@ -632,10 +666,7 @@ const questions = ref([1,2,3,4,5])
 
   .question-solved-txt h5 {
     gap: 10px;  
-  }
-
- 
-  
+  } 
 
 }
 
